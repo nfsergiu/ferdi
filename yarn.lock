@@ -45,9 +45,9 @@
   dependencies:
     nan "^2.0.0"
 
-"@types/node@^7.0.18":
-  version "7.0.43"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.43.tgz#a187e08495a075f200ca946079c914e1a5fe962c"
+"@types/node@^8.0.24":
+  version "8.9.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.9.4.tgz#dfd327582a06c114eb6e0441fa3d6fab35edad48"
 
 abbrev@1:
   version "1.1.0"
@@ -2066,11 +2066,11 @@ electron-window-state@^4.1.0:
     jsonfile "^2.2.3"
     mkdirp "^0.5.1"
 
-electron@^1.7.12:
-  version "1.7.12"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-1.7.12.tgz#dcc61a2c1b0c3df25f68b3425379a01abd01190e"
+electron@1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-1.8.2.tgz#a817cd733c2972b3c7cc4f777caf6e424b88014d"
   dependencies:
-    "@types/node" "^7.0.18"
+    "@types/node" "^8.0.24"
     electron-download "^3.0.1"
     extract-zip "^1.0.3"
 
@@ -5518,6 +5518,10 @@ send@0.8.5:
     ms "0.6.2"
     on-finished "2.1.0"
     range-parser "~1.0.0"
+
+serializr@^1.1.14:
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/serializr/-/serializr-1.1.14.tgz#abd4341592b8f7b38cca9329d7d659d35418f559"
 
 serve-index@~1.1.4:
   version "1.1.6"

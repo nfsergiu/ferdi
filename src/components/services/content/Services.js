@@ -72,7 +72,7 @@ export default class Services extends Component {
             </div>
           </Appear>
         )}
-        {services.map(service => (
+        {/* {services.map(service => (
           <Webview
             key={service.id}
             service={service}
@@ -89,7 +89,7 @@ export default class Services extends Component {
               redirect: false,
             })}
           />
-        ))}
+        ))} */}
       </div>
     );
   }

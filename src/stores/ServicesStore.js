@@ -1,6 +1,10 @@
-// import { remote } from 'electron';
+import { ipcRenderer } from 'electron';
 import { action, computed, observable } from 'mobx';
 import { debounce, remove } from 'lodash';
+import {
+  serialize,
+  deserialize,
+} from 'serializr';
 // import path from 'path';
 // import fs from 'fs-extra';
 
@@ -9,6 +13,8 @@ import Request from './lib/Request';
 import CachedRequest from './lib/CachedRequest';
 import { matchRoute } from '../helpers/routing-helpers';
 import { gaEvent } from '../lib/analytics';
+
+import ServiceModel from '../models/Service';
 
 export default class ServicesStore extends Store {
   @observable allServicesRequest = new CachedRequest(this.api.services, 'all');
@@ -62,6 +68,7 @@ export default class ServicesStore extends Store {
       this._saveActiveService.bind(this),
       this._logoutReaction.bind(this),
       this._shareSettingsWithServiceProcess.bind(this),
+      this._shareWithMainProcess.bind(this),
     ]);
 
     // Just bind this
@@ -555,6 +562,11 @@ export default class ServicesStore extends Store {
       channel: 'settings-update',
       args: this.stores.settings.all,
     });
+  }
+
+  _shareWithMainProcess() {
+    const services = this.allDisplayed.map(service => serialize(service));
+    ipcRenderer.send('services', services);
   }
 
   _cleanUpTeamIdAndCustomUrl(recipeId, data) {

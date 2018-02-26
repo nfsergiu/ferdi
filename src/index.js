@@ -1,4 +1,4 @@
-import { app, BrowserWindow, shell } from 'electron';
+import { app, BrowserWindow, shell, BrowserView } from 'electron';
 import fs from 'fs-extra';
 import path from 'path';
 

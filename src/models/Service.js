@@ -1,9 +1,10 @@
 import { computed, observable, autorun } from 'mobx';
 import path from 'path';
 import normalizeUrl from 'normalize-url';
+import { identifier, serializable } from 'serializr';
 
 export default class Service {
-  id = '';
+  @serializable(identifier()) id = '';
   recipe = '';
   webview = null;
   timer = null;
@@ -11,23 +12,23 @@ export default class Service {
 
   isAttached = false;
 
-  @observable isActive = false; // Is current webview active
+  @serializable @observable isActive = false; // Is current webview active
 
-  @observable name = '';
-  @observable unreadDirectMessageCount = 0;
-  @observable unreadIndirectMessageCount = 0;
+  @serializable @observable name = '';
+  @serializable @observable unreadDirectMessageCount = 0;
+  @serializable @observable unreadIndirectMessageCount = 0;
 
-  @observable order = 99;
-  @observable isEnabled = true;
-  @observable isMuted = false;
-  @observable team = '';
-  @observable customUrl = '';
-  @observable isNotificationEnabled = true;
-  @observable isBadgeEnabled = true;
-  @observable isIndirectMessageBadgeEnabled = true;
-  @observable iconUrl = '';
-  @observable hasCustomUploadedIcon = false;
-  @observable hasCrashed = false;
+  @serializable @observable order = 99;
+  @serializable @observable isEnabled = true;
+  @serializable @observable isMuted = false;
+  @serializable @observable team = '';
+  @serializable @observable customUrl = '';
+  @serializable @observable isNotificationEnabled = true;
+  @serializable @observable isBadgeEnabled = true;
+  @serializable @observable isIndirectMessageBadgeEnabled = true;
+  @serializable @observable iconUrl = '';
+  @serializable @observable hasCustomUploadedIcon = false;
+  @serializable @observable hasCrashed = false;
 
   constructor(data, recipe) {
     if (!data) {
@@ -78,7 +79,7 @@ export default class Service {
     });
   }
 
-  @computed get url() {
+  @serializable @computed get url() {
     if (this.recipe.hasCustomUrl && this.customUrl) {
       let url;
       try {
@@ -101,7 +102,7 @@ export default class Service {
     return this.recipe.serviceURL;
   }
 
-  @computed get icon() {
+  @serializable @computed get icon() {
     if (this.iconUrl) {
       return this.iconUrl;
     }
@@ -109,15 +110,15 @@ export default class Service {
     return path.join(this.recipe.path, 'icon.svg');
   }
 
-  @computed get hasCustomIcon() {
+  @serializable @computed get hasCustomIcon() {
     return Boolean(this.iconUrl);
   }
 
-  @computed get iconPNG() {
+  @serializable @computed get iconPNG() {
     return path.join(this.recipe.path, 'icon.png');
   }
 
-  @computed get userAgent() {
+  @serializable @computed get userAgent() {
     let userAgent = window.navigator.userAgent;
     if (typeof this.recipe.overrideUserAgent === 'function') {
       userAgent = this.recipe.overrideUserAgent();
