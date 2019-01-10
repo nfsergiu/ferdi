@@ -1,4 +1,4 @@
-import { computed, observable } from 'mobx';
+import { computed, observable, reaction } from 'mobx';
 
 import Store from './lib/Store';
 import CachedRequest from './lib/CachedRequest';
@@ -7,6 +7,7 @@ import delayApp from '../features/delayApp';
 import spellchecker from '../features/spellchecker';
 import serviceProxy from '../features/serviceProxy';
 import workspaces from '../features/workspaces';
+import basicAuth from '../features/basicAuth';
 
 import { DEFAULT_FEATURES_CONFIG } from '../config';
 
@@ -22,6 +23,13 @@ export default class FeaturesStore extends Store {
 
     await this.featuresRequest._promise;
     setTimeout(this._enableFeatures.bind(this), 1);
+
+    // single key reaction
+    reaction(() => this.stores.user.data.isPremium, () => {
+      if (this.stores.user.isLoggedIn) {
+        this.featuresRequest.invalidate({ immediately: true });
+      }
+    });
   }
 
   @computed get anonymousFeatures() {
@@ -49,5 +57,6 @@ export default class FeaturesStore extends Store {
     spellchecker(this.stores, this.actions);
     serviceProxy(this.stores, this.actions);
     workspaces(this.stores, this.actions);
+    basicAuth(this.stores, this.actions);
   }
 }
