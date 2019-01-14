@@ -26,3 +26,4 @@ if (!isDevMode || (isDevMode && useLiveAPI)) {
 }
 
 export const API = api;
+export const API_VERSION = 'v1';
