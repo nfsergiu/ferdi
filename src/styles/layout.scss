@@ -63,7 +63,7 @@ html { overflow: hidden; }
   flex-direction: column;
   padding-bottom: 10px;
   text-align: center;
-  width: $theme-sidebar-width;
+  width: 35px;
   z-index: 200;
 
   .sidebar__add-service {
@@ -72,15 +72,15 @@ html { overflow: hidden; }
     border-radius: $theme-border-radius-small;
     height: 32px;
     margin: 10px auto;
-    width: 32px;
+    width: 20px;
   }
 
   .sidebar__button {
     color: $theme-gray-light;
     font-size: 24px;
-    padding: 7px 0;
+    padding: 2px 0;
     position: relative;
-    width: $theme-sidebar-width;
+    width: 20px;
 
     &:hover,
     &:active { color: lighten($theme-gray-light, 10%); }

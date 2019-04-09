@@ -81,11 +81,7 @@ class AppLayout extends Component {
       children,
       // isOnline,
       news,
-      showServicesUpdatedInfoBar,
-      appUpdateIsDownloaded,
       removeNewsItem,
-      reloadServicesAfterUpdate,
-      installAppUpdate,
       showRequiredRequestsError,
       areRequiredRequestsSuccessful,
       retryRequiredRequests,
@@ -141,32 +137,6 @@ class AppLayout extends Component {
                   >
                     <span className="mdi mdi-flash" />
                     {intl.formatMessage(messages.requiredRequestsFailed)}
-                  </InfoBar>
-                )}
-                {showServicesUpdatedInfoBar && (
-                  <InfoBar
-                    type="primary"
-                    ctaLabel={intl.formatMessage(messages.buttonReloadServices)}
-                    onClick={reloadServicesAfterUpdate}
-                    sticky
-                  >
-                    <span className="mdi mdi-power-plug" />
-                    {intl.formatMessage(messages.servicesUpdated)}
-                  </InfoBar>
-                )}
-                {appUpdateIsDownloaded && (
-                  <InfoBar
-                    type="primary"
-                    ctaLabel={intl.formatMessage(messages.buttonInstallUpdate)}
-                    onClick={installAppUpdate}
-                    sticky
-                  >
-                    <span className="mdi mdi-information" />
-                    {intl.formatMessage(messages.updateAvailable)}
-                    {' '}
-                    <a href="https://meetfranz.com/changelog" target="_blank">
-                      <u>{intl.formatMessage(messages.changelog)}</u>
-                    </a>
                   </InfoBar>
                 )}
                 <BasicAuth />

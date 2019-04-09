@@ -214,30 +214,6 @@ export default @observer class EditSettingsForm extends Component {
               </p>
             </div>
 
-            {/* Updates */}
-            <h2 id="updates">{intl.formatMessage(messages.headlineUpdates)}</h2>
-            {updateIsReadyToInstall ? (
-              <Button
-                label={intl.formatMessage(messages.buttonInstallUpdate)}
-                onClick={installUpdate}
-              />
-            ) : (
-              <Button
-                buttonType="secondary"
-                label={intl.formatMessage(updateButtonLabelMessage)}
-                onClick={checkForUpdates}
-                disabled={isCheckingForUpdates || isUpdateAvailable}
-                loaded={!isCheckingForUpdates || !isUpdateAvailable}
-              />
-            )}
-            {noUpdateAvailable && (
-              <p>{intl.formatMessage(messages.updateStatusUpToDate)}</p>
-            )}
-            <br />
-            <Toggle field={form.$('beta')} />
-            {intl.formatMessage(messages.currentVersion)}
-            {' '}
-            {remote.app.getVersion()}
           </form>
         </div>
       </div>

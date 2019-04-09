@@ -8,7 +8,7 @@
   }
 
   &.is-disabled .tab-item__icon { filter: grayscale(100%) opacity(.2); }
-  .tab-item__icon { width: 34px; }
+  .tab-item__icon { width: 20px; }
 }
 
 .tabs {
@@ -25,18 +25,21 @@
 .tab-item {
   align-items: center;
   display: flex;
-  height: 65px;
+  height: 35px;
   justify-content: center;
-  min-height: 50px;
+  min-height: 40px;
   position: relative;
   transition: background $theme-transition-time;
-  width: $theme-sidebar-width;
+  width: 35px;
 
   &.is-active {
-    background: lighten($theme-brand-primary, 35%);
-    border-left: 4px solid $theme-brand-primary;
+    background: #545454;
+    border-left: 2px solid #04ff37;
 
-    .tab-item__icon { margin-left: -4px; }
+    .tab-item__icon {
+      margin-left: -4px;
+      margin-top: -8px;
+    }
   }
 
   &.is-disabled .tab-item__icon { filter: grayscale(100%) opacity(0.2); }
@@ -45,23 +48,24 @@
 
   .tab-item__icon {
     height: auto;
-    width: 30px;
+    width: 20px;
+    margin-top: -8px;
   }
 
   .tab-item__message-count {
     align-items: center;
-    background: $theme-brand-danger;
-    border-radius: 20px;
-    bottom: 8px;
+    background: #d9534f;
+    border-radius: 32px;
+    bottom: 4px;
     color: #FFF;
     display: flex;
-    font-size: 11px;
+    font-size: 10px;
     justify-content: center;
-    min-height: 17px;
-    min-width: 17px;
+    min-height: 15px;
+    min-width: 15px;
     padding: 0px 5px;
     position: absolute;
-    right: 8px;
+    right: 2px;
 
     &.is-indirect { padding-top: 0; }
   }
